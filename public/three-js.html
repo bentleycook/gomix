@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <style>
+      body {
+        background: rgba(0,0,0,.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #content {
+        background: white;
+        padding: 24px;
+        width: 80%;
+        max-width: 600px;
+        max-height: 90%;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.js"></script>
+  </head>
+  <body>
+    <div id="content">
+      <div id="3d-scene"></div>
+    </div>
+  </body>
+  <script>
+    let scene = new THREE.Scene();
+    scene.background = new THREE.Color('rgb(80%, 80%, 80%)');
+    let camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+    camera.position.z = 30;
+    let renderer = new THREE.WebGLRenderer();
+    renderer.setSize(500, 500);
+    document.getElementById('3d-scene').appendChild(renderer.domElement);
+    let geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    let material = new THREE.MeshPhongMaterial({color: 0xFF7F00});
+    let torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+    let light = new THREE.AmbientLight(0x404040);
+    scene.add(light);
+    let directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    scene.add(directionalLight);
+    let render = () => {
+      requestAnimationFrame(render);
+      torusKnot.rotation.x += 0.01;
+      torusKnot.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    };
+    render();
+  </script>
+  <script src="./js/overlay.js"></script>
+</html>

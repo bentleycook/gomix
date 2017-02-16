@@ -1,0 +1,17 @@
+{
+  "name": "MeetUp's Power-Up",
+  "details":"A Gomix-backed Power-Up for Boulder's NodeJS MeetUp",
+  "icon": {
+    "url": "https://cdn.gomix.com/be1e2b3f-0862-4207-9df7-c8db9fb4ba93%2Fboulder_js.jpeg"
+  },
+  "author": "Bentley Cook",
+  "capabilities": [
+    "callback",
+    "card-buttons"
+  ],
+  "connectors": {
+    "iframe": {
+      "url": "./power-up.html"
+    }
+  }
+}
